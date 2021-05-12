@@ -9,6 +9,7 @@ from fastpip import pip
 import os
 import pandas
 import numpy as np
+from sklearn.utils import shuffle
 
 files = os.listdir('raw_data')
 
