@@ -14,8 +14,8 @@ if __name__ == "__main__":
     high_noise_labels = np.genfromtxt('data/clean_labels.csv')
     attributes = np.genfromtxt('data/all_attributes.csv', delimiter=',')
 
-    low_noise_file = open('data/nar_labels_5percent.csv', 'w+')
-    high_noise_file = open('data/nar_labels_10percent.csv', 'w+')
+    low_noise_file = open('data/nnar_labels_5percent.csv', 'w+')
+    high_noise_file = open('data/nnar_labels_10percent.csv', 'w+')
 
     total_counter = 0
     l_flipped_counter = 0
@@ -39,15 +39,15 @@ if __name__ == "__main__":
         rand_instance_index = randint(0, SET_LENGTH-1)
         if low_noise_labels[rand_instance_index] == MAJ_LABEL:
             if randint(0,100) < 3+(30 if low_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0):
-                print('Mislabel rate: ', 3+(30 if low_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
+                #print('Mislabel rate: ', 3+(30 if low_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
                 low_noise_labels[rand_instance_index] = MIN_LABEL
                 l_flipped_counter += 1
 
-    while h_flipped_counter < 0.05*SET_LENGTH:
+    while h_flipped_counter < 0.1*SET_LENGTH:
         rand_instance_index = randint(0, SET_LENGTH-1)
         if high_noise_labels[rand_instance_index] == MAJ_LABEL:
             if randint(0,100) < 5+(50 if high_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0):
-                print('Mislabel rate: ', 5+(50 if high_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
+                #print('Mislabel rate: ', 5+(50 if high_noise_labels[i[rand_instance_index][1]]==MIN_LABEL else 0))
                 high_noise_labels[rand_instance_index] = MIN_LABEL
                 h_flipped_counter += 1
 
