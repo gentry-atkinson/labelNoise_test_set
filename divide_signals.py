@@ -14,6 +14,7 @@ files = os.listdir('raw_data')
 
 if __name__ == "__main__":
     print('Raw files: ', files)
+    print('Number of files: ', len(files))
     att_file = open('all_attributes.csv', 'w+')
     lab_file = open('clean_labels.csv', 'w+')
     class_file = open('classes.txt', 'w+')
@@ -62,6 +63,8 @@ if __name__ == "__main__":
             elif 'human' in file:
                 lab_file.write('1\n')
                 h_counter += 1
+            else:
+                print("***Encountered Bad Filename***")
 
     att_file.close()
     lab_file.close()
