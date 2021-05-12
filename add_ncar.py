@@ -8,9 +8,9 @@ from random import randint
 import os
 
 if __name__ == "__main__":
-    clean_labels = np.genfromtxt('clean_labels.csv')
-    low_noise_labels = open('ncar_labels_5percent.csv', 'w+')
-    high_noise_labels = open('ncar_labels_10percent.csv', 'w+')
+    clean_labels = np.genfromtxt('data/clean_labels.csv')
+    low_noise_labels = open('data/ncar_labels_5percent.csv', 'w+')
+    high_noise_labels = open('data/ncar_labels_10percent.csv', 'w+')
 
     total_counter = 0
     l_flipped_coutner = 0
@@ -38,6 +38,6 @@ if __name__ == "__main__":
     print('Low noise labels flipped: ', l_flipped_coutner)
     print('High noise labels flipped: ', h_flipped_counter)
     print('Lines written to low noise file: ')
-    os.system('cat ncar_labels_5percent.csv | wc -l')
+    os.system('cat data/ncar_labels_5percent.csv | wc -l')
     print('Lines written to high noise file: ')
-    os.system('cat ncar_labels_10percent.csv | wc -l')
+    os.system('cat data/ncar_labels_10percent.csv | wc -l')
