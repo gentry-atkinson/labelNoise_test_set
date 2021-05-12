@@ -13,14 +13,14 @@ if __name__ == "__main__":
     high_noise_labels = open('data/ncar_labels_10percent.csv', 'w+')
 
     total_counter = 0
-    l_flipped_coutner = 0
+    l_flipped_counter = 0
     h_flipped_counter = 0
 
     for l in clean_labels:
         total_counter += 1
         if randint(0,100)<5:
             low_noise_labels.write('{}\n'.format(1 if l==0 else 0))
-            l_flipped_coutner += 1
+            l_flipped_counter += 1
         else:
             low_noise_labels.write('{}\n'.format(l))
 
@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     #sanity checks
     print('Total labels processed: ', total_counter)
-    print('Low noise labels flipped: ', l_flipped_coutner)
+    print('Low noise labels flipped: ', l_flipped_counter)
     print('High noise labels flipped: ', h_flipped_counter)
     print('Lines written to low noise file: ')
     os.system('cat data/ncar_labels_5percent.csv | wc -l')
