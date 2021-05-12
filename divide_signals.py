@@ -33,9 +33,11 @@ if __name__ == "__main__":
         print('Keys: ', att.keys())
         print('Number of samples: ', len(att['time']))
 
-        instance_acc = [np.linalg.norm([att['ax'][i], att['ay'][i], att['az'][i]]) for i in range(len(att['time']))]
-        instance_gyro = [np.linalg.norm([att['wx'][i], att['wy'][i], att['wz'][i]]) for i in range(len(att['time']))]
-        instance_mag = [np.linalg.norm([att['Bx'][i], att['By'][i], att['Bz'][i]]) for i in range(len(att['time']))]
+        #calculate magnitude of vectors from 3 sensors
+        #discard first and last 15 seconds, or 750 samples at 50Hz
+        instance_acc = [np.linalg.norm([att['ax'][i], att['ay'][i], att['az'][i]]) for i in range(len(att['time']))][750:-750]
+        instance_gyro = [np.linalg.norm([att['wx'][i], att['wy'][i], att['wz'][i]]) for i in range(len(att['time']))][750:-750]
+        instance_mag = [np.linalg.norm([att['Bx'][i], att['By'][i], att['Bz'][i]]) for i in range(len(att['time']))][750:-750]
         print('Number of acc values: ', len(instance_acc))
 
         pips = pip([(i, j) for i,j in enumerate(instance_acc)], num_segments+2, distance='vertical')
@@ -69,6 +71,7 @@ if __name__ == "__main__":
     att_file.close()
     lab_file.close()
 
+    #sanity checks
     print('Total counter: ', total_counter)
     print('Total dog walks: ', d_counter)
     print('Total human wallks: ', h_counter)
