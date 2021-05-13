@@ -24,14 +24,13 @@ if __name__ == "__main__":
     counts = [np.count_nonzero(clean_labels==0), np.count_nonzero(clean_labels==1)]
     MAJ_LABEL = np.argmax(counts)
     MIN_LABEL = np.argmin(counts)
-    SET_LENGTH = len(clean_labels//3)
+    SET_LENGTH = len(clean_labels)
     print('Majority label: ', MAJ_LABEL)
     print('Minority label: ', MIN_LABEL)
 
     acc = [attributes[i] for i in range(0, len(attributes), 3)]
     nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(acc)
     d, i = nbrs.kneighbors(acc)
-    print(i)
     print('Number of entries in neighbor table: ', len(i))
     print('Size of neighbor vector: ', len(i[0]))
 
