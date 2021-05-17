@@ -9,7 +9,7 @@
 echo Segmenting Data
 python3 divide_signals.py
 echo Generating NCAR
-pyton3 add_ncar.py
+python3 add_ncar.py
 echo Generating NAR
 python3 add_nar.py
 echo Generating NNAR
