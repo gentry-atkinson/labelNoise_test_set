@@ -1,7 +1,7 @@
 #Author: Gentry Atkinson
 #Organization: Texas University
 #Data: 12 May, 2021
-#Generate two Noise Not at Random label sets, 5% and 10%
+#Create some "sanity check" plots for all 7 label sets using tSNE
 
 from matplotlib import pyplot as plt
 import numpy as np
@@ -22,12 +22,12 @@ if __name__ == "__main__":
 
     v = tsne(n_components=2, n_jobs=8).fit_transform(acc)
     colors = ['red', 'blue']
-
+    print('Clean Plot')
     plt.figure(1)
     for i in range(SET_LENGTH):
         plt.scatter(v[i][0], v[i][1], c=colors[int(clean_labels[i])], s=2, marker='.')
     plt.savefig('imgs/tsne_clean.pdf')
-
+    print('NCAR Plots')
     plt.figure(2)
     for i in range(SET_LENGTH):
         plt.scatter(v[i][0], v[i][1], c=colors[int(ncar_5p[i])], s=2, marker='.')
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     for i in range(SET_LENGTH):
         plt.scatter(v[i][0], v[i][1], c=colors[int(ncar_10p[i])], s=2, marker='.')
     plt.savefig('imgs/tsne_ncar_10percent.pdf')
-
+    print('NAR Plots')
     plt.figure(4)
     for i in range(SET_LENGTH):
         plt.scatter(v[i][0], v[i][1], c=colors[int(nar_5p[i])], s=2, marker='.')
@@ -47,7 +47,7 @@ if __name__ == "__main__":
     for i in range(SET_LENGTH):
         plt.scatter(v[i][0], v[i][1], c=colors[int(nar_10p[i])], s=2, marker='.')
     plt.savefig('imgs/tsne_nar_10percent.pdf')
-
+    print('NNAR Plots')
     plt.figure(6)
     for i in range(SET_LENGTH):
         plt.scatter(v[i][0], v[i][1], c=colors[int(nnar_5p[i])], s=2, marker='.')
