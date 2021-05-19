@@ -16,3 +16,6 @@ echo Generating NNAR
 python3 add_nnar.py
 echo Generating Plots
 python3 visualizer.py
+echo Test Some Models
+python3 model_tests_no_fe.py
+python3 model_tests_with_fe.py

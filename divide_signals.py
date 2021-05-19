@@ -36,8 +36,11 @@ if __name__ == "__main__":
         #calculate magnitude of vectors from 3 sensors
         #discard first and last 15 seconds, or 750 samples at 50Hz
         instance_acc = [np.linalg.norm([att['ax'][i], att['ay'][i], att['az'][i]]) for i in range(len(att['time']))][750:-750]
+        instance_acc \= np.max(np.abs(instance_acc))
         instance_gyro = [np.linalg.norm([att['wx'][i], att['wy'][i], att['wz'][i]]) for i in range(len(att['time']))][750:-750]
+        instance_gyro \= np.max(np.abs(instance_gyro))
         instance_mag = [np.linalg.norm([att['Bx'][i], att['By'][i], att['Bz'][i]]) for i in range(len(att['time']))][750:-750]
+        instance_mag \= np.max(np.abs(instance_mag))
         print('Number of acc values: ', len(instance_acc))
 
         pips = pip([(i, j) for i,j in enumerate(instance_acc)], num_segments+2, distance='vertical')
